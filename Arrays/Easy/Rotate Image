@@ -1,0 +1,18 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """  
+        #[[1,2,3],
+        # [4,5,6],
+        # [7,8,9]]
+                   
+        for x in range(len(matrix)):
+            for c in range (x):
+                matrix[c][x], matrix[x][c] = matrix[x][c], matrix[c][x]
+                        # [[1, 4, 7],
+                        # [2, 5, 8],
+                        # [3, 6, 9]]
+        for x in matrix:
+            x.reverse()
+       
