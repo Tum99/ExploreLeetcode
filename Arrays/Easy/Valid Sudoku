@@ -1,0 +1,36 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        # checking rows 
+        for row in range(9):
+            rSet = set()
+            for col in range(9):
+                value = board[row][col]
+                if value in rSet:
+                    return False
+                if value != ".":
+                    rSet.add(value)
+                    
+        # checking cols 
+        for row in range(9):
+            cSet = set()
+            for col in range(9):
+                value = board[col][row]
+                if value in cSet:
+                    return False
+                if value != ".":
+                    cSet.add(value)
+                    
+        # checking the squares
+        startingP = [(0,0),(0,3),(0,6),(3,0),(3,3),(3,6),(6,0),(6,3),(6,6)]
+        
+        for i, j in startingP:
+            sSet = set()
+            for row in range(i, i+3):
+                for col in range(j, j+3):
+                    value = board[row][col]
+                    if value in sSet:
+                        return False
+                    if value != ".":
+                        sSet.add(value)
+        
+        return True
