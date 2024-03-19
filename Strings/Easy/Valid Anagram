@@ -1,0 +1,19 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #method 1..........return sorted(s) == sorted(t)
+        #method 2..........return Counter(s) == Counter(t)
+        
+        if len(s) != len(t):
+            return False
+        
+        hashS = {}
+        hashT = {}
+        for v in range(len(s)):
+            hashS[s[v]] = 1 + hashS.get(s[v], 0)
+            hashT[t[v]] = 1 + hashT.get(t[v], 0)
+            
+        for key in hashS:
+            if hashS[key] != hashT.get(key, 0):
+                return False
+        return True
+        
