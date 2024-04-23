@@ -1,0 +1,19 @@
+class MyHashSet:
+
+    def __init__(self):
+        self.buckets = [[]] * 10*4
+
+    def add(self, key: int) -> None:
+        bucketsIndex = key % 10*4
+        if key not in self.buckets[bucketsIndex]:
+            self.buckets[bucketsIndex].append(key)
+
+    def remove(self, key: int) -> None:
+        bucketsIndex = key % 10*4
+        if key in self.buckets[bucketsIndex]:
+            self.buckets[bucketsIndex].remove(key)
+
+    def contains(self, key: int) -> bool:
+        bucketsIndex = key % 10*4
+        return key in self.buckets[bucketsIndex]
+        
